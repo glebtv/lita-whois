@@ -14,7 +14,7 @@ module Lita
         
         def define(response)
           domain = response.matches[0][0]
-          line = Cocaine::CommandLine.new("whois", domain)
+          line = ::Cocaine::CommandLine.new("whois", domain)
           response.reply(line.run)
         end
     end
