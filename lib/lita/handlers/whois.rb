@@ -7,8 +7,8 @@ module Lita
         
         def whois(response)
           domain = response.match_data[1]
-          line = ::Cocaine::CommandLine.new("whois", domain)
-          response.reply(line.run)
+          line = ::Cocaine::CommandLine.new("whois", ':domain')
+          response.reply(line.run(domain: domain))
         end
     end
 
