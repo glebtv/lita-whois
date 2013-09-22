@@ -4,7 +4,7 @@ module Lita
   module Handlers
     class Whois < Handler
         route(
-        /^(?:wh|whois) (.+)/,
+        /^(wh|whois) (.+)/,
         :define,
         command: true,
         help: {
