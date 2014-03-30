@@ -1,0 +1,8 @@
+Documentation:
+  Enabled: false
+
+FileName:
+  Enabled: false
+
+MethodLength:
+  Max: 15

@@ -1,2 +1,10 @@
-require "cocaine"
-require "lita/handlers/whois"
+require 'lita'
+
+Lita.load_locales Dir[File.expand_path(
+    File.join('..', '..', 'locales', '*.yml'), __FILE__
+)]
+
+require 'lita/handlers/whois'
+
+require 'ipaddress'
+require 'whois'

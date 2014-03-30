@@ -1,6 +1,6 @@
 # lita-whois
 
-WHOIS handler for lita chat bot
+WHOIS handler for searching domain, TLD, IPv4, and IPv6 WHOIS records.
 
 ## Installation
 
@@ -12,11 +12,17 @@ gem "lita-whois"
 
 ## Configuration
 
-
+None
 
 ## Usage
 
-TODO: Describe the plugin's features and how to use them.
+Basics:
+```
+Lita whois example.com            - Get the WHOIS info for a domain
+Lita whois .io                    - Get the WHOIS info for a TLD
+Lita whois 8.8.8.8                - Get the WHOIS info for an IPv4 address
+Lita whois 2001:418:141e:196::fc4 - Get the WHOIS info for an IPv6 address
+```
 
 ## License
 
