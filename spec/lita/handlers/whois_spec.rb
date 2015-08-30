@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe Lita::Handlers::Whois, lita_handler: true do
-  it do
-    is_expected.to route_command('whois example.com').to(:whois)
-    is_expected.to route_command('whois .io').to(:whois)
-    is_expected.to route_command('whois 8.8.8.8').to(:whois)
-    is_expected.to route_command('whois 2001:418:141e:196::fc4').to(:whois)
-  end
+  it { is_expected.to route_command('whois example.com').to(:whois) }
+  it { is_expected.to route_command('whois .io').to(:whois) }
+  it { is_expected.to route_command('whois 8.8.8.8').to(:whois) }
+  it { is_expected.to route_command('whois 2001:418:141e:196::fc4').to(:whois) }
 
-  describe '#whois_domain' do
+  describe '#whois' do
     let(:domain_good) do
       client = double
       expect(client).to receive(:lookup) { 'Generic response example.com' }
@@ -44,9 +42,7 @@ describe Lita::Handlers::Whois, lita_handler: true do
       send_command('whois asdf.sdf')
       expect(replies.last).to eq('Error looking up WHOIS data for asdf.sdf')
     end
-  end
 
-  describe '#whois_tld' do
     let(:tld_good) do
       client = double
       expect(client).to receive(:lookup) { 'Generic TLD response .io' }
@@ -70,9 +66,7 @@ describe Lita::Handlers::Whois, lita_handler: true do
       send_command('whois .wtf')
       expect(replies.last).to eq('Invalid TLD response .wtf')
     end
-  end
 
-  describe '#whois_ipv4' do
     let(:ipv4_good) do
       client = double
       expect(client).to receive(:lookup) { 'Generic IPv4 response 8.8.8.8' }
