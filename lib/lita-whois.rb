@@ -6,7 +6,6 @@ Lita.load_locales Dir[File.expand_path(
 
 require 'lita/handlers/whois'
 
-require 'ipaddress'
 require 'whois'
 
 Lita::Handlers::Whois.template_root File.expand_path(

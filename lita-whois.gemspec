@@ -16,7 +16,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'lita', '~> 4.2'
   spec.add_runtime_dependency 'whois'
-  spec.add_runtime_dependency 'ipaddress'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'coveralls'
