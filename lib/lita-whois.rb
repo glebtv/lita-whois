@@ -8,3 +8,8 @@ require 'lita/handlers/whois'
 
 require 'ipaddress'
 require 'whois'
+
+Lita::Handlers::Whois.template_root File.expand_path(
+  File.join('..', '..', 'templates'),
+  __FILE__
+)

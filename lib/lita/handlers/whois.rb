@@ -13,17 +13,17 @@ module Lita
 
       def whois(response)
         input = response.match_data['input']
-        response.reply(lookup(input))
+        response.reply(render_template('full', output: lookup(input)))
       end
 
       private
 
       def lookup(record)
         client = ::Whois::Client.new
-        return client.lookup(record).to_s
+        client.lookup(record).to_s
       rescue => e
         log.warn e
-        return "Error looking up WHOIS data for #{record}"
+        render_template('simple', output: "Error looking up WHOIS data for #{record}")
       end
     end
 
