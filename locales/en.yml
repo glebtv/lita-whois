@@ -2,3 +2,13 @@ en:
   lita:
     handlers:
       whois:
+        help:
+          syntax:
+            domain: whois example.com
+            tld: whois .io
+            ip: whois 8.8.8.8
+          desc:
+            domain: Get the WHOIS info for a domain
+            tld: Get the WHOIS info for a TLD
+            ip: Get the WHOIS info for an IPv4 or IPv6 address
+        error: "Error looking up WHOIS data for %{record}"

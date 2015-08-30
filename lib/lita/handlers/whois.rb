@@ -5,9 +5,9 @@ module Lita
         /^whois\s(?<input>.*)$/,
         :whois,
         help: {
-          'whois example.com' => 'Get the WHOIS info for a domain',
-          'whois .io' => 'Get the WHOIS info for a TLD',
-          'whois 8.8.8.8' => 'Get the WHOIS info for an IPv4 or IPv6 address'
+          t('help.syntax.domain') => t('help.desc.domain'),
+          t('help.syntax.tld') => t('help.desc.tld'),
+          t('help.syntax.ip') => t('help.desc.ip')
         }
       )
 
@@ -23,7 +23,7 @@ module Lita
         client.lookup(record).to_s
       rescue => e
         log.warn e
-        render_template('simple', output: "Error looking up WHOIS data for #{record}")
+        render_template('simple', output: t('error', record: record))
       end
     end
 
