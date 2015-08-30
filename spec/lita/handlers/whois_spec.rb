@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Lita::Handlers::Whois, lita_handler: true do
   it do
-    is_expected.to route_command('whois example.com').to(:whois_domain)
-    is_expected.to route_command('whois .io').to(:whois_tld)
-    is_expected.to route_command('whois 8.8.8.8').to(:whois_ip)
-    is_expected.to route_command('whois 2001:418:141e:196::fc4').to(:whois_ip)
+    is_expected.to route_command('whois example.com').to(:whois)
+    is_expected.to route_command('whois .io').to(:whois)
+    is_expected.to route_command('whois 8.8.8.8').to(:whois)
+    is_expected.to route_command('whois 2001:418:141e:196::fc4').to(:whois)
   end
 
   describe '#whois_domain' do
@@ -42,7 +42,7 @@ describe Lita::Handlers::Whois, lita_handler: true do
     it 'shows an error when the domain does not have a WHOIS' do
       expect(Whois::Client).to receive(:new) { domain_err }
       send_command('whois asdf.sdf')
-      expect(replies.last).to eq('Cannot find a WHOIS server for asdf.sdf')
+      expect(replies.last).to eq('Error looking up WHOIS data for asdf.sdf')
     end
   end
 
@@ -106,7 +106,7 @@ describe Lita::Handlers::Whois, lita_handler: true do
     it 'shows an error when the IP is invalid' do
       expect(Whois::Client).to receive(:new) { ipv4_err }
       send_command('whois 0.0.0.0')
-      expect(replies.last).to eq('Cannot find a WHOIS server for 0.0.0.0')
+      expect(replies.last).to eq('Error looking up WHOIS data for 0.0.0.0')
     end
 
     it 'shows results for the IPv6 address' do
@@ -118,7 +118,7 @@ describe Lita::Handlers::Whois, lita_handler: true do
     it 'shows an error when the IP is invalid' do
       expect(Whois::Client).to receive(:new) { ipv6_err }
       send_command('whois ::')
-      expect(replies.last).to eq('Cannot find a WHOIS server for ::')
+      expect(replies.last).to eq('Error looking up WHOIS data for ::')
     end
   end
 end
