@@ -35,9 +35,8 @@ module Lita
       end
 
       def whois_ip(response)
-        if IPAddress.valid? response.matches[0][0]
-          response.reply(reverse_lookup(response.matches[0][0]))
-        end
+        return unless IPAddress.valid? response.matches[0][0]
+        response.reply(reverse_lookup(response.matches[0][0]))
       end
 
       private
