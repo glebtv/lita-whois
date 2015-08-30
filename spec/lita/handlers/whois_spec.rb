@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe Lita::Handlers::Whois, lita_handler: true do
-  it { routes_command('whois example.com').to(:whois_domain) }
-  it { routes_command('whois .io').to(:whois_tld) }
-  it { routes_command('whois 8.8.8.8').to(:whois_ip) }
-  it { routes_command('whois 2001:418:141e:196::fc4').to(:whois_ip) }
+  it do
+    is_expected.to route_command('whois example.com').to(:whois_domain)
+    is_expected.to route_command('whois .io').to(:whois_tld)
+    is_expected.to route_command('whois 8.8.8.8').to(:whois_ip)
+    is_expected.to route_command('whois 2001:418:141e:196::fc4').to(:whois_ip)
+  end
 
   describe '#whois_domain' do
     let(:domain_good) do
