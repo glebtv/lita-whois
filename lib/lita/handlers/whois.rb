@@ -13,14 +13,14 @@ module Lita
 
       def whois(response)
         input = response.match_data['input']
-        response.reply(render_template('full', output: lookup(input)))
+        response.reply(lookup(input))
       end
 
       private
 
       def lookup(record)
         client = ::Whois::Client.new
-        client.lookup(record).to_s
+        render_template('full', output: client.lookup(record).to_s)
       rescue => e
         log.warn e
         render_template('simple', output: t('error', record: record))
