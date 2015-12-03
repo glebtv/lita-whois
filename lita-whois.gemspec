@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'lita-whois'
-  spec.version       = '1.0.0'
+  spec.version       = '1.1.0'
   spec.authors       = ['glebtv', 'Eric Sigler']
   spec.email         = ['glebtv@gmail.com', 'me@esigler.com']
   spec.description   = 'WHOIS handler for lita chat bot'
